@@ -1,17 +1,15 @@
 # Base_Player
 Base Player is a C++ and QT5 music player
 
-Base Player will deliver all the features of the Albix Player, while adding a few more. The two projects in question will continue to grow separately.
+Copyright (c) 2017 JJ Posti <techtimejourney.net>
 
-<Base Player v.1 Copyright (c) 2017 JJ Posti <techtimejourney.net>
-<Base Player v.1> comes with ABSOLUTELY NO WARRANTY;
-for details see: http://www.gnu.org/copyleft/gpl.html.
 This is free software, and you are welcome to redistribute it under
 GPL Version 2, June 1991″
+
+Base Player will deliver all the features of the Albix Player, while adding a few more. The two projects in question will continue to grow separately.
+
+
 _____________________________________
-
-
-
 
 
 
@@ -51,6 +49,7 @@ sudo yum install qt5-qtmultimedia-devel qt5-qtbase-devel .
 
 Also, be sure to install Qtcreator (qtcreator package) because you need to  build the project with it. 
 
+
 ____________________________
 
-Original post is at:
+Original post is at: https://www.techtimejourney.net/base-player-v-1-arrives/
