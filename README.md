@@ -49,7 +49,7 @@ sudo yum install qt5-qtmultimedia-devel qt5-qtbase-devel .
 
 Also, be sure to install Qtcreator (qtcreator package) because you need to  build the project with it. 
 
-
+For optimal usage install pulseaudio and pulseaudio-utils.
 ____________________________
 
 Original post is at: https://www.techtimejourney.net/base-player-v-1-arrives/
