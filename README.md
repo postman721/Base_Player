@@ -15,7 +15,7 @@ _____________________________________
 
 ![base](https://user-images.githubusercontent.com/29865797/34427319-de56b5dc-ec49-11e7-81ed-85e7a023b7ce.png)
 
-Current features:
+V1. features:
 
     Add or remove files. When removing song make sure that you remove the topmost song last. When the topmost song is remove the remove button will go disabled. Remove button activates again when a new list of songs arrives.
     
@@ -32,10 +32,25 @@ Current features:
     Done with pure QT5.
     
     Styled with CSS.
+    
 
-TODO:
+V2. added features.
 
-Add a full playlist support with a continuous playback.
+	Playlist mode added.
+
+	Statusbar messages upgraded.
+	
+	Play song functionality improved to be more functional.
+	
+	Random program crashes fixed.
+	
+	Removal of the entire song list made possible.
+
+	Song name(info) will show up once song is selected.
+	
+	Playing is handled via buttons; Double-click to play a song is removed as a redundant functionality.
+	
+	UI is redesigned.
 ____________________
 
 Building:
@@ -52,4 +67,4 @@ Also, be sure to install Qtcreator (qtcreator package) because you need to  buil
 For optimal usage install pulseaudio and pulseaudio-utils.
 ____________________________
 
-Original post is at: https://www.techtimejourney.net/base-player-v-1-arrives/
+Initial project announcement post is at: https://www.techtimejourney.net/base-player-v-1-arrives/
