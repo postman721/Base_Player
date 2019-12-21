@@ -51,6 +51,10 @@ V2. added features.
 	Playing is handled via buttons; Double-click to play a song is removed as a redundant functionality.
 	
 	UI is redesigned.
+	
+	 Disabling listWidget during playback.
+
+		-Song needs to be stopped or paused in order for the listWidget to become active. 
 ____________________
 
 Building:
