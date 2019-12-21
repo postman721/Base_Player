@@ -51,6 +51,7 @@ void MainWindow::on_play_clicked()
     cout << show  << endl;
     ui->statusBar->showMessage(info);
     player->play();
+    ui->listWidget->setEnabled(false);
 
 }
 
@@ -59,6 +60,7 @@ void MainWindow::on_pushButton_clicked()
 {
     ui->statusBar->showMessage("Playlist mode.");
     player->setPlaylist(playlist);
+    ui->listWidget->setEnabled(false);
     player->play();
 }
 
@@ -67,12 +69,16 @@ void MainWindow::on_pause_clicked()
 {
     player->pause();
     ui->statusBar->showMessage("Paused.");
+    ui->listWidget->setEnabled(true);
+
 }
 
 void MainWindow::on_stop_clicked()
 {
     player->stop();
     ui->statusBar->showMessage("Stopped.");
+    ui->listWidget->setEnabled(true);
+
 }
 void MainWindow::on_add_clicked()
 {
