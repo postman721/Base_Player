@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QMediaPlayer>
+#include <QMediaPlaylist>
 #include <QFileDialog>
 #include <QSlider>
 #include <QString>
@@ -32,11 +33,14 @@ private slots:
 
     void on_add_clicked();
 
-    void on_listWidget_itemDoubleClicked();
+    void on_listWidget_itemClicked();
 
     void on_remove_clicked();
 
     void on_verticalSlider_valueChanged(int value);
+
+    void on_pushButton_clicked();
+
 
 private:
     Ui::MainWindow *ui;

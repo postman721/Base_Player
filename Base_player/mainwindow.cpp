@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     player= new QMediaPlayer(this);
+    playlist= new QMediaPlaylist(player);
     slider= new QSlider(this);
 
     slider->setOrientation(Qt::Horizontal);
@@ -17,7 +18,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(player, &QMediaPlayer::durationChanged, slider, &QSlider::setMaximum);
     connect(player, &QMediaPlayer::positionChanged, slider, &QSlider::setValue);
     connect(slider, &QSlider::sliderMoved, player, &QMediaPlayer::setPosition);
-
+    ui->play->setEnabled(false);
+    ui->remove->setEnabled(false);
+    ui->statusBar->setEnabled(false);
 
     system("pactl -- set-sink-volume 0  35%");
 
@@ -37,17 +40,33 @@ MainWindow::~MainWindow()
 }
 
 
-
-
 void MainWindow::on_play_clicked()
+
 {
+    QString current = ui->listWidget->currentItem()->text();
+    cout << current.toStdString() << endl;
+    QFileInfo fileInfo(current);
+    QString info(fileInfo.fileName());
+    string show = info.toStdString();
+    cout << show  << endl;
+    ui->statusBar->showMessage(info);
     player->play();
 
 }
 
+//Playlist mode
+void MainWindow::on_pushButton_clicked()
+{
+    ui->statusBar->showMessage("Playlist mode.");
+    player->setPlaylist(playlist);
+    player->play();
+}
+
+
 void MainWindow::on_pause_clicked()
 {
     player->pause();
+    ui->statusBar->showMessage("Paused.");
 }
 
 void MainWindow::on_stop_clicked()
@@ -57,31 +76,35 @@ void MainWindow::on_stop_clicked()
 }
 void MainWindow::on_add_clicked()
 {
-        QStringList filename=QFileDialog::getOpenFileNames(this, "Select music files");
         ui->statusBar->showMessage("Select files.");
-        player->setMedia(QUrl::fromLocalFile(filename.at(0)));
+        QStringList filename = QFileDialog::getOpenFileNames(this, "Select music files(*.*)");
+        for(const QString & filename: filename){
+            playlist->addMedia(QMediaContent(QUrl::fromLocalFile(filename)));
+        }
         ui->listWidget->addItems(filename);
         int count= ui->listWidget->count();
         cout << count << endl;
         ui->remove->setEnabled(true);
 
-        on_play_clicked();
         QFileInfo fileInfo(filename.at(0));
         QString info(fileInfo.fileName());
         string show = info.toStdString();
         cout << show  << endl;
         ui->statusBar->showMessage(info);
         ui->listWidget->setCurrentRow(0);
+        ui->play->setEnabled(true);
+        ui->remove->setEnabled(true);
+        ui->statusBar->setEnabled(true);
+
+        on_pushButton_clicked();
 }
 
 
-
-void MainWindow::on_listWidget_itemDoubleClicked()
+void MainWindow::on_listWidget_itemClicked()
 {
    QString current = ui->listWidget->currentItem()->text();
    cout << current.toStdString() << endl;
    player->setMedia(QUrl::fromLocalFile(current));
-   on_play_clicked();
 
    QFileInfo fileInfo(current);
    QString info(fileInfo.fileName());
@@ -89,6 +112,7 @@ void MainWindow::on_listWidget_itemDoubleClicked()
    cout << show  << endl;
    ui->statusBar->showMessage(info);
 }
+
 
 void MainWindow::on_remove_clicked()
 {
@@ -107,6 +131,9 @@ void MainWindow::on_remove_clicked()
         ui->listWidget->takeItem(removing);
         on_stop_clicked();
         ui->remove->setEnabled(false);
+        ui->listWidget->clear();
+        ui->statusBar->setEnabled(false);
+
     }
 
 }
@@ -466,3 +493,4 @@ void MainWindow::on_verticalSlider_valueChanged(int i)
 
     }
 }
+

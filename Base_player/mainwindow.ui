@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>694</width>
-    <height>276</height>
+    <width>739</width>
+    <height>271</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Base Player v.1</string>
+   <string>Base Player v.2</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow#MainWindow{
@@ -23,135 +23,29 @@ font-size: 12px;}</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
+    <item row="0" column="0" colspan="2">
      <widget class="QListWidget" name="listWidget">
       <property name="toolTip">
        <string>Playlist.</string>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">QListWidget#listWidget{
+color:#ffffff; 
+background-color:#353535; 
+border: 2px solid #353535; 
+border-radius: 3px;
+font-size: 12px;}</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="0">
-     <widget class="QSplitter" name="splitter">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <widget class="QPushButton" name="add">
-       <property name="toolTip">
-        <string>Add songs.</string>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton{color:#ffffff; background-color:#c0c3c6;}</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="icons.qrc">
-         <normaloff>:/icons/icons/add.png</normaloff>:/icons/icons/add.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>24</width>
-         <height>24</height>
-        </size>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="stop">
-       <property name="toolTip">
-        <string>Stop playback.</string>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton{color:#212326; background-color:#c0c3c6;}</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="icons.qrc">
-         <normaloff>:/icons/icons/stop.png</normaloff>:/icons/icons/stop.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>24</width>
-         <height>24</height>
-        </size>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="play">
-       <property name="toolTip">
-        <string>Play.</string>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton{color:#212326; background-color:#c0c3c6;}</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="icons.qrc">
-         <normaloff>:/icons/icons/play.png</normaloff>:/icons/icons/play.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>24</width>
-         <height>24</height>
-        </size>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pause">
-       <property name="toolTip">
-        <string>Pause playback.</string>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton{color:#212326; background-color:#c0c3c6;}</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="icons.qrc">
-         <normaloff>:/icons/icons/pause.png</normaloff>:/icons/icons/pause.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>24</width>
-         <height>24</height>
-        </size>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="remove">
-       <property name="toolTip">
-        <string>Remove from the list.</string>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton{color:#212326; background-color:#c0c3c6;}</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="icons.qrc">
-         <normaloff>:/icons/icons/remove.png</normaloff>:/icons/icons/remove.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>24</width>
-         <height>24</height>
-        </size>
-       </property>
-      </widget>
-     </widget>
-    </item>
-    <item row="0" column="1" rowspan="2">
+    <item row="0" column="2">
      <widget class="QSlider" name="verticalSlider">
       <property name="toolTip">
        <string>Volume levels.</string>
       </property>
       <property name="styleSheet">
-       <string notr="true">QSlider{color:#212326; background-color:#c0c3c6;}</string>
+       <string notr="true">QStatusBar#statusBar{color:#ffffff; 
+background-color:#336699; }</string>
       </property>
       <property name="singleStep">
        <number>5</number>
@@ -173,6 +67,132 @@ font-size: 12px;}</string>
       </property>
      </widget>
     </item>
+    <item row="1" column="0">
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QPushButton" name="add">
+       <property name="toolTip">
+        <string>Add songs.</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton#add{color:#ffffff; background-color:#336699;}
+</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="icons.qrc">
+         <normaloff>:/icons/icons/add.png</normaloff>:/icons/icons/add.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="stop">
+       <property name="toolTip">
+        <string>Stop playback.</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton#stop{color:#ffffff; background-color:#336699;}\n</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="icons.qrc">
+         <normaloff>:/icons/icons/stop.png</normaloff>:/icons/icons/stop.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="play">
+       <property name="toolTip">
+        <string>Play.</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton#play{color:#ffffff; background-color:#336699;}\n</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="icons.qrc">
+         <normaloff>:/icons/icons/play.png</normaloff>:/icons/icons/play.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pause">
+       <property name="toolTip">
+        <string>Pause playback.</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton#pause{color:#ffffff; background-color:#336699;}\n</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="icons.qrc">
+         <normaloff>:/icons/icons/pause.png</normaloff>:/icons/icons/pause.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="remove">
+       <property name="toolTip">
+        <string>Remove from the list. Clicking the first element will clear the list.</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton#remove{color:#ffffff; background-color:#336699;}\n</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="icons.qrc">
+         <normaloff>:/icons/icons/remove.png</normaloff>:/icons/icons/remove.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QPushButton" name="pushButton">
+      <property name="toolTip">
+       <string>Press to play entire list.</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton#pushButton{color:#ffffff; background-color:#336699;}</string>
+      </property>
+      <property name="text">
+       <string>PLAYLIST  MODE</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QStatusBar" name="statusBar">
@@ -180,7 +200,8 @@ font-size: 12px;}</string>
     <string>Duration.</string>
    </property>
    <property name="styleSheet">
-    <string notr="true">QStatusBar{color:#212326; background-color:#c0c3c6;}</string>
+    <string notr="true">QStatusBar#statusBar{color:#ffffff; 
+background-color:#336699; }</string>
    </property>
   </widget>
  </widget>
