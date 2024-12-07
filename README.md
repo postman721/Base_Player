@@ -68,6 +68,7 @@ sudo yum install qt5-qtmultimedia-devel qt5-qtbase-devel .
 
 Also, be sure to install Qtcreator (qtcreator package) because you need to  build the project with it. 
 
+On Debian based systems you will also need to install something like: libqt5multimedia5-plugins .
 For optimal usage install pulseaudio and pulseaudio-utils.
 ____________________________
 
