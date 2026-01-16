@@ -1,6 +1,7 @@
 # Base Player v3
 Continues the legacy of my now obsolete Base Player from 2017.
 
+<img width="980" height="788" alt="Image" src="https://github.com/user-attachments/assets/e0deaf24-828e-4d70-8699-8dba8ea932fd" />
 
 A simple Qt 6 music player with a Designer-editable UI and glossy control buttons.
 
