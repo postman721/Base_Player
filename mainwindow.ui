@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>980</width>
+    <height>760</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Base Player</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* ===================== GLOBAL ===================== */
+*{
+    font-family: &quot;Segoe UI&quot;, &quot;Tahoma&quot;, &quot;Inter&quot;;
+    font-size: 12px;
+    color: #eaf4ff;
+}
+
+/* ===================== WINDOW BACKDROP ===================== */
+QMainWindow, QWidget{
+    background: qlineargradient(x1:0,y1:0,x2:0,y2:1,
+        stop:0 #0b1422,
+        stop:0.55 #070e19,
+        stop:1 #040812);
+}
+
+/* ===================== AERO GLASS CARDS ===================== */
+/* Use frames named: cardFrame, playlistFrame, controlsFrame */
+QFrame#cardFrame,
+QFrame#playlistFrame,
+QFrame#controlsFrame{
+    background: qlineargradient(x1:0,y1:0,x2:0,y2:1,
+        stop:0 rgba(255,255,255,18),   /* top gloss */
+        stop:0.12 rgba(120,190,255,18),/* blue tint */
+        stop:0.55 rgba(15,35,70,18),   /* glass depth */
+        stop:1 rgba(0,0,0,55));        /* bottom shadow */
+    border: 1px solid rgba(160,220,255,38);
+    border-radius: 14px;
+}
+
+/* inner “shine line” feeling */
+QFrame#cardFrame,
+QFrame#playlistFrame,
+QFrame#controlsFrame{
+    outline: none;
+}
+
+/* ===================== TITLES ===================== */
+QLabel#titleLabel{
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #bfe6ff;
+}
+
+QLabel#nowPlayingLabel{
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+/* ===================== INPUTS ===================== */
+QLineEdit{
+    background: rgba(0, 12, 28, 70);
+    border: 1px solid rgba(160,220,255,28);
+    border-radius: 12px;
+    padding: 7px 10px;
+    selection-background-color: rgba(120,200,255,130);
+}
+
+QLineEdit:focus{
+    border: 1px solid rgba(190,245,255,85);
+    background: rgba(0, 14, 34, 78);
+}
+
+/* ===================== PLAYLIST ===================== */
+QListWidget{
+    background: rgba(0, 8, 18, 62);
+    border: 1px solid rgba(160,220,255,18);
+    border-radius: 12px;
+    padding: 6px;
+    selection-background-color: rgba(80,160,255,100);
+}
+
+QListWidget::item{
+    padding: 8px;
+    border-radius: 10px;
+}
+
+QListWidget::item:selected{
+    background: rgba(80,160,255,120);
+    color: #f6fcff;
+}
+
+/* ===================== PUSH BUTTONS (AERO GLOSS) ===================== */
+QPushButton{
+    min-height: 32px;
+    padding: 6px 12px;
+    border-radius: 12px;
+
+    border: 1px solid rgba(160,220,255,22);
+
+    background: qlineargradient(x1:0,y1:0,x2:0,y2:1,
+        stop:0 rgba(255,255,255,18),
+        stop:0.18 rgba(140,210,255,16),
+        stop:0.60 rgba(20,45,90,18),
+        stop:1 rgba(0,0,0,62));
+}
+
+/* “cool glow” hover */
+QPushButton:hover{
+    border: 1px solid rgba(200,250,255,85);
+    background: qlineargradient(x1:0,y1:0,x2:0,y2:1,
+        stop:0 rgba(200,250,255,22),
+        stop:1 rgba(0,0,0,66));
+}
+
+QPushButton:pressed{
+    background: rgba(0,0,0,72);
+}
+
+QPushButton:disabled{
+    color: rgba(234,244,255,70);
+    border: 1px solid rgba(255,255,255,10);
+    background: rgba(255,255,255,6);
+}
+
+/* ===================== TRANSPORT BUTTONS ===================== */
+QToolButton{
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 16px;
+    font-weight: 800;
+
+    border-radius: 14px;
+    border: 1px solid rgba(160,220,255,22);
+
+    background: qradialgradient(cx:0.5, cy:0.22, radius: 1.2,
+        stop:0 rgba(255,255,255,18),
+        stop:0.35 rgba(140,210,255,14),
+        stop:0.65 rgba(0,0,0,22),
+        stop:1 rgba(0,0,0,70));
+}
+
+QToolButton:hover{
+    border: 1px solid rgba(200,250,255,92);
+    background: qradialgradient(cx:0.5, cy:0.22, radius: 1.2,
+        stop:0 rgba(200,250,255,22),
+        stop:1 rgba(0,0,0,72));
+}
+
+QToolButton:pressed{
+    background: rgba(0,0,0,78);
+}
+
+/* ===================== SLIDERS ===================== */
+QSlider::groove:horizontal{
+    height: 8px;
+    border-radius: 4px;
+    background: rgba(0,0,0,55);
+    border: 1px solid rgba(160,220,255,14);
+}
+
+QSlider::sub-page:horizontal{
+    background: rgba(90,170,255,120);
+    border-radius: 4px;
+}
+
+QSlider::handle:horizontal{
+    width: 16px;
+    margin: -5px 0;
+    border-radius: 8px;
+
+    background: qlineargradient(x1:0,y1:0,x2:0,y2:1,
+        stop:0 rgba(255,255,255,220),
+        stop:0.45 rgba(160,225,255,140),
+        stop:1 rgba(0,0,0,160));
+
+    border: 1px solid rgba(180,235,255,60);
+}
+
+/* ===================== CHECKBOX ===================== */
+QCheckBox{ spacing: 8px; }
+
+QCheckBox::indicator{
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(160,220,255,18);
+    background: rgba(0,0,0,55);
+}
+
+QCheckBox::indicator:checked{
+    background: rgba(90,170,255,130);
+    border: 1px solid rgba(200,250,255,90);
+}
+
+/* ===================== STATUS BAR / MENU ===================== */
+QStatusBar{
+    background: rgba(0,0,0,45);
+    border-top: 1px solid rgba(160,220,255,14);
+    color: rgba(230,250,255,190);
+}
+
+QMenuBar{
+    background: rgba(0,0,0,45);
+    border-bottom: 1px solid rgba(160,220,255,14);
+}
+
+QMenuBar::item:selected{
+    background: rgba(90,170,255,35);
+    border-radius: 8px;
+}
+
+QMenu{
+    background: #07101e;
+    border: 1px solid rgba(160,220,255,14);
+}
+
+QMenu::item:selected{
+    background: rgba(90,170,255,45);
+}
+</string>
+  </property>
+  <property name="tabShape">
+   <enum>QTabWidget::TabShape::Rounded</enum>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="mainLayout">
+    <property name="spacing">
+     <number>14</number>
+    </property>
+    <property name="leftMargin">
+     <number>16</number>
+    </property>
+    <property name="topMargin">
+     <number>16</number>
+    </property>
+    <property name="rightMargin">
+     <number>16</number>
+    </property>
+    <property name="bottomMargin">
+     <number>16</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="playlistFrame">
+      <property name="frameShape">
+       <enum>QFrame::Shape::StyledPanel</enum>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QListWidget" name="listWidget"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QFrame" name="cardFrame">
+         <property name="frameShape">
+          <enum>QFrame::Shape::StyledPanel</enum>
+         </property>
+         <layout class="QVBoxLayout" name="headerCardLayout">
+          <property name="spacing">
+           <number>12</number>
+          </property>
+          <property name="leftMargin">
+           <number>16</number>
+          </property>
+          <property name="topMargin">
+           <number>16</number>
+          </property>
+          <property name="rightMargin">
+           <number>16</number>
+          </property>
+          <property name="bottomMargin">
+           <number>16</number>
+          </property>
+          <item>
+           <layout class="QHBoxLayout" name="headerRow">
+            <item>
+             <spacer name="spacer1">
+              <property name="orientation">
+               <enum>Qt::Orientation::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="searchEdit">
+              <property name="placeholderText">
+               <string>Search in playlist…</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QLabel" name="playlistLabel">
+            <property name="text">
+             <string>Playlist: (unsaved)</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="controlsFrame">
+            <property name="frameShape">
+             <enum>QFrame::Shape::StyledPanel</enum>
+            </property>
+            <layout class="QVBoxLayout" name="controlsCardLayout">
+             <property name="spacing">
+              <number>12</number>
+             </property>
+             <property name="leftMargin">
+              <number>16</number>
+             </property>
+             <property name="topMargin">
+              <number>16</number>
+             </property>
+             <property name="rightMargin">
+              <number>16</number>
+             </property>
+             <property name="bottomMargin">
+              <number>16</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="nowPlayingLabel">
+               <property name="text">
+                <string>Now playing: —</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="seekRow">
+               <property name="spacing">
+                <number>10</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="timeLeft">
+                 <property name="text">
+                  <string>0:00</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSlider" name="seekSlider">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="timeRight">
+                 <property name="text">
+                  <string>0:00</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="transportRow">
+               <property name="spacing">
+                <number>12</number>
+               </property>
+               <item>
+                <widget class="QToolButton" name="btnPrev">
+                 <property name="text">
+                  <string>⏮</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QToolButton" name="btnPlayPause">
+                 <property name="text">
+                  <string>▶</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QToolButton" name="btnStop">
+                 <property name="text">
+                  <string>⏹</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QToolButton" name="btnNext">
+                 <property name="text">
+                  <string>⏭</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="spacer3">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QCheckBox" name="chkShuffle">
+                 <property name="text">
+                  <string>Shuffle</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btnRepeat">
+                 <property name="text">
+                  <string>Repeat: Off</string>
+                 </property>
+                 <property name="autoDefault">
+                  <bool>false</bool>
+                 </property>
+                 <property name="flat">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="spacer4">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QCheckBox" name="chkMute">
+                 <property name="text">
+                  <string>Mute</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="spectrumLayout">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="playlistButtonsRow">
+            <property name="spacing">
+             <number>10</number>
+            </property>
+            <item>
+             <widget class="QPushButton" name="btnAdd">
+              <property name="text">
+               <string>Add</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnRemove">
+              <property name="text">
+               <string>Remove</string>
+              </property>
+              <property name="autoDefault">
+               <bool>false</bool>
+              </property>
+              <property name="flat">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnUp">
+              <property name="text">
+               <string>Up</string>
+              </property>
+              <property name="autoDefault">
+               <bool>false</bool>
+              </property>
+              <property name="flat">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnDown">
+              <property name="text">
+               <string>Down</string>
+              </property>
+              <property name="autoDefault">
+               <bool>false</bool>
+              </property>
+              <property name="flat">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnClear">
+              <property name="text">
+               <string>Clear</string>
+              </property>
+              <property name="autoDefault">
+               <bool>false</bool>
+              </property>
+              <property name="flat">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="spacer2">
+              <property name="orientation">
+               <enum>Qt::Orientation::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnOpenPlaylist">
+              <property name="text">
+               <string>Open Playlist</string>
+              </property>
+              <property name="autoDefault">
+               <bool>false</bool>
+              </property>
+              <property name="flat">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnSavePlaylist">
+              <property name="text">
+               <string>Save Playlist</string>
+              </property>
+              <property name="autoDefault">
+               <bool>false</bool>
+              </property>
+              <property name="flat">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
